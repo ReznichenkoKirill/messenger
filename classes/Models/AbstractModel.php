@@ -1,5 +1,7 @@
 <?php
+namespace Models;
 
+use mysqli;
 
 abstract class AbstractModel
 {
@@ -10,6 +12,6 @@ abstract class AbstractModel
 
     public function __construct()
     {
-        $this->db = new mysqli(); // TODO Create config and fill the parameters
+        $this->db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     }
 }

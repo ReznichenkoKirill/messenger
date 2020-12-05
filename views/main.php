@@ -12,6 +12,18 @@
     <title>Messenger</title>
 </head>
 <body>
-
+<header>
+    <h2><a href="/">Messenger</a></h2>
+</header>
+<main>
+    <nav>
+        <ul class="users"></ul>
+    </nav>
+    <div class="chat"></div>
+</main>
+<footer></footer>
+<script src="../js/functions.js"></script>
+<script src="../js/users.js"></script>
+<script src="../js/chat.js"></script>
 </body>
 </html>

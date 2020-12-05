@@ -9,6 +9,7 @@ class Index extends AbstractController
 
     public function index()
     {
-        // TODO: Implement index() method.
+        $this->view->template = 'main';
+        $this->view->render();
     }
 }
