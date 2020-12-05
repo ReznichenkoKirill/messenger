@@ -14,6 +14,7 @@ class Messages extends AbstractModel
     {
         $queryMessage = "INSERT INTO messages (id, content_id , sender_id, recipient_id) VALUES (NULL, NULL , '$sender', '$recipient');";
         $queryContent = "INSERT INTO content (id, content) VALUES (NULL, '$mess');";
-        $this->db->query($queryMessage, $queryContent);
+        $this->db->query($queryMessage);
+        $this->db->query($queryContent);
     }
 }
