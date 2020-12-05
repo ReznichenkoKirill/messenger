@@ -5,14 +5,15 @@ class Messages extends AbstractModel
 {
     public function getAllCorrespondence($recipient, $sender)
     {
-        $query = "SELECT message FROM messages WHERE recipient_id = $recipient AND sender_id = $sender;";
+        $query = "SELECT content.content, messages.sender_id, messages.recepient_id FROM messages INNER JOIN content ON messages.content_id = content.id AND recipient_id = $recipient AND sender_id = $sender;";;
         $result = $this->db->query($query);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function addToCorrespondence($recipient, $sender, $mess)
     {
-        $query = "INSERT INTO messages (id, message, sender_id, recipient_id) VALUES (NULL, '$mess' , '$sender', '$recipient');";
-        $this->db->query($query);
+        $queryMessage = "INSERT INTO messages (id, content_id , sender_id, recipient_id) VALUES (NULL, NULL , '$sender', '$recipient');";
+        $queryContent = "INSERT INTO content (id, content) VALUES (NULL, '$mess');";
+        $this->db->query($queryMessage, $queryContent);
     }
 }
