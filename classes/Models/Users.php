@@ -1,15 +1,8 @@
 <?php
 
 
-class Users
+class Users extends AbstractModel
 {
-    protected $db;
-
-    public function __construct()
-    {
-        $this->db = new mysqli();
-    }
-
     public function getAllUsers()
     {
         $query = "SELECT * FROM users;";

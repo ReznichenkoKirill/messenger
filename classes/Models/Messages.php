@@ -1,15 +1,8 @@
 <?php
 
 
-class Messages
+class Messages extends AbstractModel
 {
-    protected $db;
-
-    public function __construct()
-    {
-        $this->db = new mysqli();
-    }
-
     public function getAllCorrespondence($recipient, $sender)
     {
         $query = "SELECT message FROM messages WHERE recipient_id = $recipient AND sender_id = $sender;";
@@ -22,6 +15,4 @@ class Messages
         $query = "INSERT INTO messages (id, message, sender_id, recipient_id) VALUES (NULL, '$mess' , '$sender', '$recipient');";
         $this->db->query($query);
     }
-
-
 }
