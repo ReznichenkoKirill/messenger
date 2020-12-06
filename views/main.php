@@ -22,6 +22,9 @@
     </nav>
     <div class="chat">
         <!-- TODO check if user logged in -->
+        <div class="recipient-container">
+            <p class="recipient-name">Kate</p> <!-- TODO add a recipient name in users.js -->
+        </div>
         <div class="new-message">
             <form method="post">
                 <input type="hidden" name="sender">
