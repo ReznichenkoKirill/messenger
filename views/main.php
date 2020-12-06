@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
     <title>Messenger</title>
 </head>
 <body>
@@ -19,7 +20,17 @@
     <nav>
         <ul class="users"></ul>
     </nav>
-    <div class="chat"></div>
+    <div class="chat">
+        <!-- TODO check if user logged in -->
+        <div class="new-message">
+            <form method="post">
+                <input type="hidden" name="sender">
+                <input type="hidden" name="recipient">
+                <textarea name="message" cols="35" rows="1" placeholder="Message" autofocus required></textarea>
+                <input type="submit" value="send">
+            </form>
+        </div>
+    </div>
 </main>
 <footer></footer>
 <script src="../js/functions.js"></script>

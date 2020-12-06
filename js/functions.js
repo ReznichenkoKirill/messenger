@@ -3,5 +3,7 @@ function ucfirst(string) {
 }
 
 function sortById(arr) {
-    arr.sort((a, b) => a.id > b.id ? 1 : -1);
+    arr.sort(function (a, b) {
+        return a.id - b.id;
+    });
 }
