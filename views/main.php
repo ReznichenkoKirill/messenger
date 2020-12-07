@@ -24,6 +24,14 @@
             <ul class="users"></ul>
         </nav>
         <div class="chat">
+            <div class="auth">
+                <form method="post">
+                    <label> Enter your login
+                        <input type="text" name="login" required>
+                    </label>
+                    <button type="submit">Sign in</button>
+                </form>
+            </div>
             <!-- TODO check if user logged in -->
             <div class="recipient-container">
                 <p class="recipient-name">Kate</p> <!-- TODO add a recipient name in users.js -->
@@ -38,19 +46,8 @@
             </div>
         </div>
     </main>
-<!--    <form class="transparent">-->
-<!--        <div class="form-inner">-->
-<!--            <h3>Регистрация</h3>-->
-<!--            <label for="username">Имя пользователя</label>-->
-<!--            <input type="text" id="username">-->
-<!--            <label for="password">Пароль</label>-->
-<!--            <input id="password" type="password">-->
-<!--            <input type="checkbox" id="custom-checkbox">-->
-<!--            <input type="submit" value="Отправить">-->
-<!--        </div>-->
-<!--    </form>-->
-    <footer></footer>
 </div>
+<footer></footer>
 <script src="../js/functions.js"></script>
 <script src="../js/users.js"></script>
 <script src="../js/chat.js"></script>

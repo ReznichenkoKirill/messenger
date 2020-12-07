@@ -7,3 +7,7 @@ function sortById(arr) {
         return a.id - b.id;
     });
 }
+function randAvatar() {
+    let avatar = [ "1.jpg", "2.png","3.png","4.jpg","5.jpg",];
+    return avatar[Math.floor(Math.random()*avatar.length)];
+}

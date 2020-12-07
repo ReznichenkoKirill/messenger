@@ -30,6 +30,10 @@ li:hover{
     cursor: pointer;
 }
 
+li{
+    list-style-type: none;
+}
+
 main{
     display: flex;
     margin: auto;
@@ -74,10 +78,10 @@ nav{
     bottom: 5px;
 }
 
-/*Иконка вместо точки в списке пользователей*/
-.users{
-
-    /*list-style-image: url(images/book.png); !* Путь к изображению маркера *!*/
+.users img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
 }
 
 /*Form*/
