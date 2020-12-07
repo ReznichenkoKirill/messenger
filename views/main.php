@@ -23,28 +23,7 @@
         <nav>
             <ul class="users"></ul>
         </nav>
-        <div class="chat">
-            <div class="auth">
-                <form method="post">
-                    <label> Enter your login
-                        <input type="text" name="login" required>
-                    </label>
-                    <button type="submit">Sign in</button>
-                </form>
-            </div>
-            <!-- TODO check if user logged in -->
-            <div class="recipient-container">
-                <p class="recipient-name">Kate</p> <!-- TODO add a recipient name in users.js -->
-            </div>
-            <div class="new-message">
-                <form method="post">
-                    <input type="hidden" name="sender">
-                    <input type="hidden" name="recipient">
-                    <textarea name="message" cols="35" rows="1" placeholder="Message" autofocus required></textarea>
-                    <input type="submit" value="send" id = "send">
-                </form>
-            </div>
-        </div>
+        <div class="chat"></div>
     </main>
 </div>
 <footer></footer>

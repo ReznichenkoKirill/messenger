@@ -1,24 +1,24 @@
-body{
+body {
 
 }
 
-header{
+header {
     height: 100px;
     width: 80%;
     margin: 10px auto;
     /*margin-bottom: 10px;*/
 }
 
-header h2{
+header h2 {
     padding-top: 25px;
 }
 
-header h2 a{
+header h2 a {
     margin-left: 20px;
     margin-top: 20px;
 }
 
-#content{
+#content {
     width: 70%;
     margin: auto;
     background-color: #92f7ff;
@@ -26,21 +26,21 @@ header h2 a{
     padding-top: 1px;
 }
 
-li:hover{
+li:hover {
     cursor: pointer;
 }
 
-li{
+li {
     list-style-type: none;
 }
 
-main{
+main {
     display: flex;
     margin: auto;
     width: 80%;
 }
 
-#logo{
+#logo {
     width: 100px;
     border-radius: 20px;
     float: left;
@@ -50,42 +50,76 @@ main{
 nav, .chat {
     border: 1px solid #000;
     background-color: #48dbff;
+    overflow: auto;
 }
 
 
-nav{
+nav {
     width: 15%;
     border-radius: 20px 0 0 20px;
 }
 
-.chat{
+.chat {
     position: relative;
     width: 80%;
     padding: 0 5rem;
     max-height: 80vh;
-    overflow: auto;
     height: 60vh;
     border-radius: 0 20px 20px 0;
 }
 
-.new-message{
-    position: absolute;
-    bottom: 10px;
-}
-
-#send{
+#send {
     position: absolute;
     bottom: 5px;
 }
 
+.chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.new-message form {
+    display: flex;
+    align-items: flex-end;
+}
+
+.user {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+}
+
+.user:hover {
+    background-color: #0097ff;
+}
+
+.user tr{
+    display: flex;
+    align-items: center;
+}
+
+.user td:last-of-type{
+    margin-left: 0.5rem;
+    font-family: Roboto, sans-serif;
+    font-size: 1.5rem;
+}
+
+.users{
+    margin: 0;
+    padding: 0;
+}
+
 .users img {
     border-radius: 50%;
-    height: 50px;
-    width: 50px;
+    height: 4rem;
+    width: 4rem;
 }
 
 /*Form*/
-* {box-sizing: border-box;}
+* {
+    box-sizing: border-box;
+}
+
 .transparent {
     position: relative;
     max-width: 400px;
@@ -93,6 +127,7 @@ nav{
     margin: 50px auto 0;
     background-size: cover;
 }
+
 .transparent:before {
     content: "";
     position: absolute;
@@ -100,9 +135,13 @@ nav{
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right bottom,rgba(43, 44, 78, .5),rgba(104, 22, 96, .5));
+    background: linear-gradient(to right bottom, rgba(43, 44, 78, .5), rgba(104, 22, 96, .5));
 }
-.form-inner {position: relative;}
+
+.form-inner {
+    position: relative;
+}
+
 .form-inner h3 {
     position: relative;
     margin-top: 0;
@@ -112,23 +151,26 @@ nav{
     font-size: 26px;
     text-transform: uppercase;
 }
+
 .form-inner h3:after {
     content: "";
-    position :absolute;
+    position: absolute;
     left: 0;
     bottom: -6px;
     height: 2px;
     width: 60px;
     background: #1762EE;
 }
+
 .form-inner label {
     display: block;
     padding-left: 15px;
     font-family: 'Roboto', sans-serif;
-    color: rgba(255,255,255,.6);
+    color: rgba(255, 255, 255, .6);
     text-transform: uppercase;
     font-size: 14px;
 }
+
 .form-inner input {
     display: block;
     width: 100%;
@@ -138,19 +180,22 @@ nav{
     line-height: 40px;
     border-radius: 20px;
     color: white;
-    background: rgba(255,255,255,.2);
+    background: rgba(255, 255, 255, .2);
     font-family: 'Roboto', sans-serif;
 }
+
 .form-inner input[type="checkbox"] {
     position: absolute;
     opacity: 0;
 }
+
 #custom-checkbox + label {
     position: relative;
     margin: 20px 0;
-    text-transform:none;
+    text-transform: none;
     cursor: pointer;
 }
+
 #custom-checkbox + label:before {
     content: "";
     display: inline-block;
@@ -160,7 +205,11 @@ nav{
     vertical-align: text-top;
     background: white;
 }
-#custom-checkbox:checked + label:before {background: #1762EE;}
+
+#custom-checkbox:checked + label:before {
+    background: #1762EE;
+}
+
 #custom-checkbox:checked + label:after {
     content: "";
     position: absolute;
@@ -172,4 +221,7 @@ nav{
     box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
     transform: rotate(45deg);
 }
-.form-inner input[type="submit"] {background: #1762EE;}
+
+.form-inner input[type="submit"] {
+    background: #1762EE;
+}

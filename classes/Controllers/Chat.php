@@ -33,7 +33,6 @@ class Chat extends AbstractController
         $sender = (int)filter_input(INPUT_POST, 'sender');
         $recipient = (int)filter_input(INPUT_POST, 'recipient');
         $message = filter_input(INPUT_POST, 'message');
-        var_dump($sender, $recipient, $message);
         $this->model->addToCorrespondence($sender, $recipient, $message);
     }
 }
