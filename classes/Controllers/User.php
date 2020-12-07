@@ -12,6 +12,7 @@ class User extends AbstractController
     {
         parent::__construct();
         $this->model = new Users();
+        $this->logIn();
     }
 
     public function index()
@@ -20,5 +21,27 @@ class User extends AbstractController
         $json = json_encode($users);
         header('Content-type: application/json');
         echo $json;
+    }
+    public function logIn() {
+        $user = filter_input(INPUT_POST,'login');
+        if($tmp = $this->model->getUser($user)) {
+            $_SESSION['login'] = $tmp['login'];
+            $_SESSION['id'] = $tmp['id'];
+            http_response_code(200);
+            return ;
+        } else {
+            $this->model->addUser($user);
+            $_SESSION['login'] = $tmp['login'];
+            $_SESSION['id'] = $tmp['id'];
+            http_response_code(200);
+            return;
+        }
+        http_response_code(400);
+    }
+    public function logOut() {
+        $user = filter_input(INPUT_POST,'logout');
+        if($user) {
+            session_destroy();
+        }
     }
 }
