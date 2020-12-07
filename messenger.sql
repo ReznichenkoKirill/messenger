@@ -80,11 +80,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `avatar`) VALUES
-(1, 'admin', '2'),
-(2, 'kate', '1'),
-(3, 'misha', '3'),
-(4, 'kirill', '4'),
-(5, 'slavik', '5');
+(1, 'admin', '2.png'),
+(2, 'kate', '1.jpg'),
+(3, 'misha', '3.png'),
+(4, 'kirill', '4.jpg'),
+(5, 'slavik', '5.jpg');
 
 --
 -- Indexes for dumped tables
