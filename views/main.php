@@ -21,6 +21,14 @@
         <ul class="users"></ul>
     </nav>
     <div class="chat">
+        <div class="auth">
+            <form method="post">
+                <label> Enter your login
+                    <input type="text" name="login" required>
+                </label>
+                <button type="submit">Sign in</button>
+            </form>
+        </div>
         <!-- TODO check if user logged in -->
         <div class="recipient-container">
             <p class="recipient-name">Kate</p> <!-- TODO add a recipient name in users.js -->
