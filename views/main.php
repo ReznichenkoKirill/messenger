@@ -23,7 +23,10 @@
         <nav>
             <ul class="users"></ul>
         </nav>
-        <div class="chat"></div>
+        <div class="conversation">
+            <div class="recipient"><div class="avatar-name"><p class="recipient-name"></p></div><p class="message-amount"></p></div>
+            <div class="chat"></div>
+        </div>
     </main>
 </div>
 <footer></footer>

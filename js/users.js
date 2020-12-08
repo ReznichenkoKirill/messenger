@@ -1,3 +1,5 @@
+let chatInterval;
+
 function loadUsers() {
     $(".users").empty();
     $.get("/user/index", function (data) {
@@ -5,17 +7,18 @@ function loadUsers() {
             $(".users").append("<li class='user'><table></table></li>");
             $(".user:last").val(data[i].id);
             $(".user:last table").append("<tr><td></td></tr>");
-            $(".user:last td").append("<img src='/images/"+ data[i].avatar + "' >");
-            $(".user:last tr").append("<td></td>");
+            $(".user:last td").append("<img class='avatar' src='/images/" + data[i].avatar + "' alt='avatar'/>");
+            $(".user:last tr").append("<td class='login'></td>");
             $(".user:last td:last").text(ucfirst(data[i].login));
         }
-        $(".user").click(function (){
+        $(".user").click(function () {
+            clearInterval(chatInterval);
             let val = $(this).val();
             getMessageForm(val);
             getChat(val);
-            setInterval(function () {
-                getChat(val);
-            }, 5000);
+            // chatInterval = setInterval(function () {
+            //     getChat(val);
+            // }, 5000);
         });
     });
 }
