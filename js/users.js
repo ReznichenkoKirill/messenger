@@ -16,9 +16,9 @@ function loadUsers() {
             let val = $(this).val();
             getMessageForm(val);
             getChat(val);
-            // chatInterval = setInterval(function () {
-            //     getChat(val);
-            // }, 5000);
+            chatInterval = setInterval(function () {
+                getChat(val);
+            }, 5000);
         });
     });
 }
