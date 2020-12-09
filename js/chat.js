@@ -31,7 +31,6 @@ function getChat(recipientId, sender) {
                     if (result[i].login === sender.login) {
                         $(".name:last").text("You").css("color", "yellow");
                         $(".message-container:last").css({
-                            "text-align": "right",
                             "background-color": "#3d3d3d",
                             "align-self": "flex-end",
                             "margin-right": "2rem"
