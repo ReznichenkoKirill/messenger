@@ -33,6 +33,20 @@ header h2 a {
     padding-top: 1px;
 }
 
+.authorisation {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.authorisation input[type='submit'] {
+    margin-top: 1rem;
+}
+
 li:hover {
     cursor: pointer;
 }
