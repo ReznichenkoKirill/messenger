@@ -21,29 +21,24 @@ $(document).ready(function () {
 });
 
 $('#login').submit(function (event) {
-    let login = $('#log').val();
-    checkLogIn(login);
-    $(this).css('display', 'none');
+    let login = $('#log').val();        // берём логин
+    checkLogIn(login);                  // проверка логина
+    $('#login').css('display', 'none'); // отключние отображения поля входа
     event.preventDefault();
-})
+});
 
 function checkLogIn(login) {
     $.ajax({
-        url : '/user/login',
+        url : '/user/login',            // Class/method
         data : {
-            login: login,
+            login: login,               // value
         },
         type : 'POST' ,
-        success : function(status){
-            if(status == '200') {
-                //TODO
+        success : function(status){     // if success
 
-            } else {
-                //TODO
-            }
         }
     });
-    $send();
+    // $send();
 }
 
 

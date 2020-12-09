@@ -12,7 +12,7 @@ class User extends AbstractController
     {
         parent::__construct();
         $this->model = new Users();
-        $this->logIn();
+//        $this->logIn();
     }
 
     public function index()
@@ -28,11 +28,13 @@ class User extends AbstractController
             $_SESSION['login'] = $tmp['login'];
             $_SESSION['id'] = $tmp['id'];
             http_response_code(200);
-            return ;
+            return;
         } else {
-            $this->model->addUser($user);
+            $this->model->addUser($user, $this->getRandomImg());
+            $tmp = $this->model->getUser($user);
             $_SESSION['login'] = $tmp['login'];
             $_SESSION['id'] = $tmp['id'];
+            var_dump($tmp);
             http_response_code(200);
             return;
         }
@@ -43,5 +45,8 @@ class User extends AbstractController
         if($user) {
             session_destroy();
         }
+    }
+    private function getRandomImg() {
+        return rand(1 , count(AVATARS));
     }
 }

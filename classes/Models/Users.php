@@ -17,9 +17,9 @@ class Users extends AbstractModel
         return $result->fetch_assoc();
     }
 
-    public function addUser($login)
+    public function addUser($login, $imgNum)
     {
-        $query = "INSERT INTO users (id, login) VALUES (NULL, '$login');";
+        $query = "INSERT INTO users (id, login, avatar) VALUES (NULL, '$login', '$imgNum');";
         $this->db->query($query);
     }
     
