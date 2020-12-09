@@ -12,14 +12,17 @@ class Users extends AbstractModel
 
     public function getUser($login)
     {
-        $query = "SELECT * FROM users WHERE login = $login;";
+        $query = "SELECT * FROM users WHERE login LIKE '$login';";
         $result = $this->db->query($query);
         return $result->fetch_assoc();
     }
 
     public function addUser($login)
     {
-        $query = "INSERT INTO users (id, login) VALUES (NULL, '$login');";
+        $avatar = rand(1, 5);
+        $avatar .= ($avatar === 2 || $avatar === 3) ? '.png' : '.jpg';
+        $query = "INSERT INTO users (id, login, avatar) VALUES (NULL, '$login', '$avatar');";
         $this->db->query($query);
+        return $this->getUser($login);
     }
 }

@@ -1,17 +1,17 @@
-function getChat(recipientId) {
+function getChat(recipientId, sender) {
     $.ajax({
         url: "/chat/messages",
         data: {id: recipientId},
         type: "POST",
         success: function (result) {
-            console.log(result);
+            $(".no-chat").remove();
             $(".messages").remove();
             $(".avatar-name .avatar").remove();
             sortById(result);
             $(".new-message").before("<div class='messages'></div>");
             $(".recipient").css("display", "flex");
             let recipientAvatarPath = $(".users li").filter(function () {
-                return $(this).val() == recipientId;
+                return $(this).val() === recipientId;
             }).find(".avatar").attr("src");
             let recipientName = $(".users li").filter(function () {
                 return $(this).val() === recipientId;
@@ -28,7 +28,7 @@ function getChat(recipientId) {
                 for (let i = 0; i < result.length; i++) {
                     $(".messages").append("<div class='message-container'></div>")
                     $(".chat").find(".message-container:last").append("<p class='name'></p>").append("<p class='message'></p>");
-                    if (result[i].login === "slavik") {
+                    if (result[i].login === sender.login) {
                         $(".name:last").text("You").css("color", "yellow");
                         $(".message-container:last").css({
                             "text-align": "right",
@@ -50,12 +50,12 @@ function getChat(recipientId) {
     });
 }
 
-function getMessageForm(recipientId) {
+function getMessageForm(recipientId, sender) {
     $(".new-message").remove();
     $(".chat").append("<div class='new-message'></div>");
     $(".new-message").append("<form method='post'></form>");
     $(".new-message form").append("<input type='hidden' name='sender'/>");
-    $(".new-message input[name='sender']").val(5); // TODO get the sender id from session
+    $(".new-message input[name='sender']").val(sender.id);
     $(".new-message form").append("<input type='hidden' name='recipient'/>");
     $(".new-message input[name='recipient']").val(recipientId);
     $(".new-message form").append("<textarea name='message' cols='35' rows='1' placeholder='Message' required autofocus></textarea>");
@@ -74,8 +74,10 @@ function sendMessage(event) {
         },
         type: "POST",
         success: function () {
-            getChat($(".new-message input[name='recipient']").val());
-            $(".new-message textarea").val("");
+            $.get("/user/getAuthUser", function (data) {
+                getChat($(".new-message input[name='recipient']").val(), data);
+                $(".new-message textarea").val("");
+            });
         }
     });
     event.preventDefault();

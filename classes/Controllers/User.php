@@ -21,4 +21,28 @@ class User extends AbstractController
         header('Content-type: application/json');
         echo $json;
     }
+
+    public function auth()
+    {
+        $login = filter_input(INPUT_POST, 'login');
+        $login = mb_strtolower(trim($login));
+        $user = $this->model->getUser($login);
+        if (empty($user)) {
+            $user = $this->model->addUser($login);
+        }
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['login'] = $user['login'];
+    }
+
+    public function getAuthUser()
+    {
+        $json = json_encode($_SESSION);
+        header('Content-type: application/json');
+        echo $json;
+    }
+
+    public function logout()
+    {
+        session_unset();
+    }
 }

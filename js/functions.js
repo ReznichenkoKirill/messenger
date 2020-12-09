@@ -7,7 +7,30 @@ function sortById(arr) {
         return a.id - b.id;
     });
 }
-function randAvatar() {
-    let avatar = [ "1.jpg", "2.png","3.png","4.jpg","5.jpg",];
-    return avatar[Math.floor(Math.random()*avatar.length)];
-}
+
+$(document).ready(function () {
+    $.get("/user/getAuthUser", function (data) {
+        console.log(data);
+        if (data.id != null) {
+            loadUsers(data);
+            $("#auth").css("display", "none");
+            $(".chat").append("<div class='no-chat'></div>");
+            $(".no-chat").append("<img src='../images/no_chat.gif' alt='no chat'/>");
+            $(".no-chat").append("<h2>No chat selected</h2>");
+            $(".no-chat").append("<p>Click on any of the users to start the chat</p>");
+            $("header").append("<button id='logout'></button>");
+            $("#logout").text("Log out (" + ucfirst(data.login) + ")");
+            $("#logout").click(function () {
+                $.ajax({
+                    url: "/user/logout",
+                    success: function () {
+                        clearInterval(chatInterval);
+                        $(".recipient").css("display", "none");
+                        $(".chat").empty();
+                        loadUsers(data);
+                    }
+                });
+            });
+        }
+    });
+});

@@ -24,7 +24,20 @@
             <ul class="users"></ul>
         </nav>
         <div class="conversation">
-            <div class="recipient"><div class="avatar-name"><p class="recipient-name"></p></div><p class="message-amount"></p></div>
+            <div class="authorisation">
+                <form method="post" id="auth">
+                    <div>
+                        <label for="login">Login</label>
+                    </div>
+                    <div>
+                        <input type="text" id="login" name="login" placeholder="Enter your login" required>
+                    </div>
+                    <input type="submit" value="log in">
+                </form>
+            </div>
+            <div class="recipient">
+                <div class="avatar-name"><p class="recipient-name"></p></div>
+                <p class="message-amount"></p></div>
             <div class="chat"></div>
         </div>
     </main>

@@ -21,7 +21,7 @@ class Chat extends AbstractController
     public function messages()
     {
         $recipientId = filter_input(INPUT_POST, 'id');
-        $senderId = 5; // TODO get the sender id
+        $senderId = $_SESSION['id'];
         $messages = $this->model->getAllCorrespondence($recipientId, $senderId);
         $json = json_encode($messages);
         header('Content-type: application/json');
