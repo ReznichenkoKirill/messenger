@@ -3,6 +3,11 @@ let chatInterval;
 function loadUsers(currentUser) {
     $(".users").empty();
     $.get("/user/index", function (data) {
+        data.forEach(function (user, index) {
+            if (user.id === currentUser.id) {
+                data.splice(index, 1);
+            }
+        });
         for (let i = 0; i < data.length; i++) {
             $(".users").append("<li class='user'><table></table></li>");
             $(".user:last").val(data[i].id);
@@ -16,9 +21,9 @@ function loadUsers(currentUser) {
             let recipient = $(this).val();
             getMessageForm(recipient, currentUser);
             getChat(recipient, currentUser);
-            // chatInterval = setInterval(function () {
-            //     getChat(val, currentUser);
-            // }, 5000);
+            chatInterval = setInterval(function () {
+                getChat(recipient, currentUser);
+            }, 5000);
         });
     });
 }
