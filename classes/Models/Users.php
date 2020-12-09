@@ -12,7 +12,7 @@ class Users extends AbstractModel
 
     public function getUser($login)
     {
-        $query = "SELECT * FROM users WHERE login = $login;";
+        $query = "SELECT * FROM users WHERE login LIKE '$login';";
         $result = $this->db->query($query);
         return $result->fetch_assoc();
     }
@@ -20,6 +20,6 @@ class Users extends AbstractModel
     public function addUser($login)
     {
         $query = "INSERT INTO users (id, login) VALUES (NULL, '$login');";
-        $this->db->query($query);
+        return $this->db->query($query);
     }
 }

@@ -1,6 +1,6 @@
 let chatInterval;
 
-function loadUsers() {
+function loadUsers(currentUser) {
     $(".users").empty();
     $.get("/user/index", function (data) {
         for (let i = 0; i < data.length; i++) {
@@ -13,19 +13,30 @@ function loadUsers() {
         }
         $(".user").click(function () {
             clearInterval(chatInterval);
-            let val = $(this).val();
-            getMessageForm(val);
-            getChat(val);
+            let recipient = $(this).val();
+            getMessageForm(recipient, currentUser);
+            getChat(recipient, currentUser);
             // chatInterval = setInterval(function () {
-            //     getChat(val);
+            //     getChat(val, currentUser);
             // }, 5000);
         });
     });
 }
 
-$(document).ready(function () {
-    loadUsers();
-    setInterval(function () {
-        loadUsers();
-    }, 5000);
+$("#auth").submit(function (event) {
+    $.ajax({
+        url: "/user/auth",
+        data: {'login': $(this).find("input[name='login']").val()},
+        type: "POST",
+        success: function () {
+            $.get("/user/getAuthUser", function (data) {
+                $("#auth").css("display", "none");
+                loadUsers(data);
+                setInterval(function () {
+                    loadUsers(data);
+                }, 5000);
+            });
+        }
+    });
+    event.preventDefault();
 });
