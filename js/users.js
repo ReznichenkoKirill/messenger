@@ -48,6 +48,10 @@ $("#auth").submit(function (event) {
                 $("header").append("<button id='logout'></button>");
                 $("#logout").text("Log out (" + ucfirst(data.login) + ")");
                 $("#auth").css("display", "none");
+                $(".chat").append("<div class='no-chat'></div>");
+                $(".no-chat").append("<img src='../images/no_chat.gif' alt='no chat'/>");
+                $(".no-chat").append("<h2>No chat selected</h2>");
+                $(".no-chat").append("<p>Click on any of the users to start the chat</p>");
                 loadUsers(data);
                 usersInterval = setInterval(function () {
                     loadUsers(data);

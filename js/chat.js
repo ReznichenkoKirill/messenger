@@ -4,13 +4,14 @@ function getChat(recipientId, sender) {
         data: {id: recipientId},
         type: "POST",
         success: function (result) {
+            $(".no-chat").remove();
             $(".messages").remove();
             $(".avatar-name .avatar").remove();
             sortById(result);
             $(".new-message").before("<div class='messages'></div>");
             $(".recipient").css("display", "flex");
             let recipientAvatarPath = $(".users li").filter(function () {
-                return $(this).val() == recipientId;
+                return $(this).val() === recipientId;
             }).find(".avatar").attr("src");
             let recipientName = $(".users li").filter(function () {
                 return $(this).val() === recipientId;

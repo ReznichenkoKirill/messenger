@@ -53,6 +53,26 @@ main {
     float: left;
 }
 
+.no-chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.no-chat img {
+    width: 15vw;
+}
+
+.no-chat h2 {
+    font-size: 3rem;
+}
+
+.no-chat p {
+    font-size: 2rem;
+}
 
 nav, .conversation {
     border: 1px solid #000;
