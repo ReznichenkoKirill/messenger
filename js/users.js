@@ -45,7 +45,8 @@ $("#auth").submit(function (event) {
         success: function () {
             $.get("/user/getAuthUser", function (data) {
                 clearInterval(usersInterval);
-                $("header").append("<button id='logout'>log out</button>");
+                $("header").append("<button id='logout'></button>");
+                $("#logout").text("Log out (" + ucfirst(data.login) + ")");
                 $("#auth").css("display", "none");
                 loadUsers(data);
                 usersInterval = setInterval(function () {
