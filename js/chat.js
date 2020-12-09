@@ -4,9 +4,6 @@ function getChat(recipientId, sender) {
         data: {id: recipientId},
         type: "POST",
         success: function (result) {
-            console.log(result);
-            console.log(recipientId);
-            console.log(sender);
             $(".messages").remove();
             $(".avatar-name .avatar").remove();
             sortById(result);
@@ -76,8 +73,10 @@ function sendMessage(event) {
         },
         type: "POST",
         success: function () {
-            getChat($(".new-message input[name='recipient']").val());
-            $(".new-message textarea").val("");
+            $.get("/user/getAuthUser", function (data) {
+                getChat($(".new-message input[name='recipient']").val(), data);
+                $(".new-message textarea").val("");
+            });
         }
     });
     event.preventDefault();

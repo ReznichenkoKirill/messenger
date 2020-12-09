@@ -6,6 +6,7 @@ header {
     height: 100px;
     width: 80%;
     margin: 10px auto;
+    position: relative;
     /*margin-bottom: 10px;*/
 }
 
@@ -16,6 +17,12 @@ header h2 {
 header h2 a {
     margin-left: 20px;
     margin-top: 20px;
+}
+
+#logout {
+    position: absolute;
+    right: 0;
+    top: 5rem;
 }
 
 #content {

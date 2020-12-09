@@ -28,9 +28,7 @@ class User extends AbstractController
         $login = mb_strtolower(trim($login));
         $user = $this->model->getUser($login);
         if (empty($user)) {
-            if ($this->model->addUser($login)) {
-                $this->auth();
-            }
+            $user = $this->model->addUser($login);
         }
         $_SESSION['id'] = $user['id'];
         $_SESSION['login'] = $user['login'];
@@ -41,5 +39,10 @@ class User extends AbstractController
         $json = json_encode($_SESSION);
         header('Content-type: application/json');
         echo $json;
+    }
+
+    public function logout()
+    {
+        session_unset();
     }
 }

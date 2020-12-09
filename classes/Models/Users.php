@@ -19,7 +19,10 @@ class Users extends AbstractModel
 
     public function addUser($login)
     {
-        $query = "INSERT INTO users (id, login) VALUES (NULL, '$login');";
-        return $this->db->query($query);
+        $avatar = rand(1, 5);
+        $avatar .= ($avatar === 2 || $avatar === 3) ? '.png' : '.jpg';
+        $query = "INSERT INTO users (id, login, avatar) VALUES (NULL, '$login', '$avatar');";
+        $this->db->query($query);
+        return $this->getUser($login);
     }
 }
